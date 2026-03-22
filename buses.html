@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buses</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Sundara.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Sundara.png" class="site-logo">
+            <h1>Sundara Bus Ticket Booking</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">BOOK TICKET</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="searchsummary">
+            <h2>Your Search</h2>
+            <p>From:<span id="from"></span></p>
+            <p>To:<span id="to"></span></p>
+            <p>Travel Date:<span id="tdate"></span></p>
+            <p>Return Date:<span id="rdate"></span></p>
+        </section>
+        <section class="buses">
+            <h2>Available Buses</h2>
+            <table>
+                <tr>
+                    <th>Bus Name</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Price</th>
+                    <th>Seat Selection</th>
+                </tr>
+                <tr>
+                    <td>Sundaram Travels</td>
+                    <td>08:00 AM</td>
+                    <td>12:00 PM</td>
+                    <td>₹500</td>
+                    <td><a href="seats.html?bus=Sundaram Travels&departure=08:00 AM&arrival=12:00 PM&price=500">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>InterCity Travels(AC)</td>
+                    <td>09:34 AM</td>
+                    <td>12:30 PM</td>
+                    <td>₹800</td>
+                    <td><a href="seats.html?bus=InterCity Travels&departure=09:34 AM&arrival=12:30 PM&price=800">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>Babu Travels(AC)</td>
+                    <td>10:00 AM</td>
+                    <td>01:30 PM</td>
+                    <td>₹750</td>
+                    <td><a href="seats.html?bus=Babu Travels&departure=10:00 AM&arrival=01:30 PM&price=750">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>KPR Travels</td>
+                    <td>10:30 AM</td>
+                    <td>02:00 PM</td>
+                    <td>₹550</td>
+                    <td><a href="seats.html?bus=KPR Travels&departure=10:30 AM&arrival=02:00 PM&price=550">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>SETC</td>
+                    <td>11:00 AM</td>
+                    <td>03:00 PM</td>
+                    <td>₹499</td>
+                    <td><a href="seats.html?bus=SETC&departure=11:00 AM&arrival=03:00 PM&price=499">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>Babu Travels(Non-AC)</td>
+                    <td>01:00 PM</td>
+                    <td>04:30 PM</td>
+                    <td>₹500</td>
+                    <td><a href="seats.html?bus=Babu Travels&departure=01:00 PM&arrival=04:30 PM&price=500">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>Sri Muthu Travels</td>
+                    <td>02:00 PM</td>
+                    <td>06:30 PM</td>
+                    <td>₹599</td>
+                    <td><a href="seats.html?bus=Sri Muthu Travels&departure=02:00 PM&arrival=06:30 PM&price=599">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>Sri Sugam Bus Tours and Travels</td>
+                    <td>03:00 PM</td>
+                    <td>07:30 PM</td>
+                    <td>₹649</td>
+                    <td><a href="seats.html?bus=Sri Sugam Bus Tours and Travels&departure=03:00 PM&arrival=07:30 PM&price=649">Select Seat</a></td>
+                </tr>
+                <tr>
+                    <td>IntrCity SmartBus(AC)</td>
+                    <td>04:00 PM</td>
+                    <td>09:00 PM</td>
+                    <td>₹899</td>
+                    <td><a href="seats.html?bus=IntrCity SmartBus&departure=04:00 PM&arrival=09:00 PM&price=899">Select Seat</a></td>
+                </tr>                
+            </table>
+        </section>
+    </main>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("from").textContent=params.get("from");
+        document.getElementById("to").textContent=params.get("to");
+        document.getElementById("tdate").textContent=params.get("tdate");
+        document.getElementById("rdate").textContent=params.get("rdate");
+    </script>
+</body>
+</html>

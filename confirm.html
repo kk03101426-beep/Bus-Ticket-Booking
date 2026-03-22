@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Sundara.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Sundara.png" class="site-logo">
+            <h1>Sundara Bus Ticket Booking</h1>
+        </div>
+        <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.html">BOOK TICKET</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bus-details">
+            <h2>Bus Details</h2>
+            <p><strong>Bus Name:</strong> <span id="bus-name"></span></p>
+            <p><strong>Departure:</strong> <span id="departure"></span></p>
+            <p><strong>Arrival:</strong> <span id="arrival"></span></p>
+            <p><strong>Selected Seats:</strong> <span id="seat-list"></span></p>
+            <p><strong>Total Price:</strong> ₹<span id="total-price"></span></p>
+        </section>
+
+        <section class="passenger-info">
+            <h2>Passenger Information</h2>
+            <form id="booking-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" required>
+
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+
+                <button type="button" id="confirm-pay">Confirm & Pay</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('bus-name').textContent = params.get('bus');
+        document.getElementById('departure').textContent = params.get('departure');
+        document.getElementById('arrival').textContent = params.get('arrival');
+        document.getElementById('seat-list').textContent = params.get('seats');
+        document.getElementById('total-price').textContent = params.get('total');
+
+        document.getElementById("confirm-pay").addEventListener("click", () => {
+
+            const passengerName = document.getElementById("name").value.trim();
+            const passengerMobile = document.getElementById("mobile").value.trim();
+            const passengerEmail = document.getElementById("email").value.trim();
+            const passengerAge = document.getElementById("age").value.trim();
+
+            if (!passengerName || !passengerMobile || !passengerEmail || !passengerAge) {
+                alert("Please fill in all passenger details before confirming.");
+                return;
+            }
+
+            const busName = document.getElementById("bus-name").textContent;
+            const departure = document.getElementById("departure").textContent;
+            const arrival = document.getElementById("arrival").textContent;
+            const seats = document.getElementById("seat-list").textContent;
+            const totalPrice = document.getElementById("total-price").textContent;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const logo = new Image();
+            logo.src = "Sundara.png"
+            logo.onload = function() {
+                doc.addImage(logo,"PNG",10,10,25,25);
+                doc.setFontSize(18);
+                doc.text("Sundara Bus Ticket Booking",40,20);
+                doc.setLineWidth(0.5);
+                doc.line(10,35,200,35);
+                doc.setFontSize(14);
+                doc.text("Bus Details",20,45);
+                doc.setFontSize(12);
+                let y=60;
+                const gap=10;
+                doc.text(`Bus Name: ${busName}`, 20, y); y+=gap;
+                doc.text(`Departure: ${departure}`, 20, y); y+=gap;
+                doc.text(`Arrival: ${arrival}`, 20, y); y+=gap;
+                doc.text(`Seats: ${seats}`, 20, y); y+=gap;
+                doc.text(`Total Price: INR ${totalPrice}`,20,y);
+
+                y+=15;
+                doc.line(10,y,200,y);
+                y+=15;
+
+                doc.setFontSize(14);
+                doc.text("Passenger Details",20,y); y+=gap;
+                doc.setFontSize(12);
+                doc.text(`Passenger Name: ${passengerName}`, 20, y); y+=gap;
+                doc.text(`Mobile: ${passengerMobile}`, 20, y); y+=gap;
+                doc.text(`Email: ${passengerEmail}`, 20, y); y+=gap;
+                doc.text(`Age: ${passengerAge}`, 20, y);
+
+                doc.setFontSize(10);
+                doc.text("Thank You For Booking With Sundara Bus Ticket Booking Service!",105,280,null,null,"center");
+            
+                doc.save("ticket.pdf");
+
+                setTimeout(() => {
+                    window.location.href = "success.html";
+                }, 1000);
+            };
+        });
+    </script>
+</body>
+</html>

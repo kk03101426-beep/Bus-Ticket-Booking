@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Sundara.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Sundara.png" class="site-logo">
+            <h1>Sundara Bus Ticket Booking</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">BOOK TICKET</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="layout">
+            <section class="bus-info">
+                <h2>Bus Details</h2>
+                <p><strong>Bus Name:</strong> <span id="bus-name"></span></p>
+                <p><strong>Departure:</strong> <span id="departure"></span></p>
+                <p><strong>Arrival:</strong> <span id="arrival"></span></p>
+                <p><strong>Price per Seat:</strong> ₹<span id="seat-price"></span></p>
+            </section>
+            <section class="seatmap">
+                <h2>Select your seat</h2>
+                <div class="bus">
+                    <div class="row">
+                        <div class="seat">1W</div>
+                        <div class="seat">2A</div>
+                        <div class="aisle"></div>
+                        <div class="seat booked">3A</div>
+                        <div class="seat">4W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">5W</div>
+                        <div class="seat">6A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">7A</div>
+                        <div class="seat">8W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">9W</div>
+                        <div class="seat">10A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">11A</div>
+                        <div class="seat">12W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat booked">13W</div>
+                        <div class="seat">14A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">15A</div>
+                        <div class="seat">16W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">17W</div>
+                        <div class="seat">18A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">19A</div>
+                        <div class="seat">20W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">21W</div>
+                        <div class="seat booked">22A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">23A</div>
+                        <div class="seat">24W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">25W</div>
+                        <div class="seat">26A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">27A</div>
+                        <div class="seat">28W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">29W</div>
+                        <div class="seat">30A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">31A</div>
+                        <div class="seat">32W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">33W</div>
+                        <div class="seat">34A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">35A</div>
+                        <div class="seat booked">36W</div>
+                    </div>
+                    <div class="row">
+                        <div class="seat">37W</div>
+                        <div class="seat">38A</div>
+                        <div class="aisle"></div>
+                        <div class="seat">39A</div>
+                        <div class="seat">40W</div>
+                    </div>
+                </div>
+            </section>
+            <section id ="summary">
+                <h3>Your Selected Seats:</h3>
+                <p id="selected-seats">None</p>
+                <h3>Total Price:</h3>
+                <p id="total-price"></p>
+                <a id="confirm-link" href="#" class="confirm-btn disabled">Confirm Booking</a>
+            </section>
+        </div>
+    </main>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const busName = params.get("bus");
+        const departure = params.get("departure");
+        const arrival = params.get("arrival");
+        const basePrice = parseInt(params.get("price")) || 500;
+
+        document.getElementById("bus-name").textContent = busName;
+        document.getElementById("departure").textContent = departure;
+        document.getElementById("arrival").textContent = arrival;
+        document.getElementById("seat-price").textContent = basePrice;
+
+        const seatPrice = basePrice;
+
+        const seats = document.querySelectorAll('.seat');
+        const summary = document.getElementById('selected-seats');
+        const totalPrice = document.getElementById('total-price');
+        const confirmLink  = document.getElementById('confirm-link');
+
+        seats.forEach(seat => {
+          seat.addEventListener('click', () => {
+            if (seat.classList.contains('booked')) return;
+            seat.classList.toggle('selected');
+
+            const selectedSeats = Array.from(document.querySelectorAll('.seat.selected'))
+                                      .map(s => s.textContent);
+
+            if (selectedSeats.length) {
+                const seatDetails = selectedSeats.map(name => `${name} x ${seatPrice} = ₹${seatPrice}`);
+                summary.innerHTML = seatDetails.join('<br>');
+
+                const total = selectedSeats.length*seatPrice;
+                totalPrice.textContent = `Total: ${selectedSeats.length} seats x ${seatPrice} = ₹${total}`;
+
+                confirmLink.classList.remove('disabled');
+                confirmLink.href = `confirm.html?bus=${encodeURIComponent(busName)}&departure=${encodeURIComponent(departure)}&arrival=${encodeURIComponent(arrival)}&seats=${encodeURIComponent(selectedSeats.join(','))}&total=${total}`;
+            } else {
+                summary.textContent = 'None';
+                totalPrice.textContent = "₹0";
+
+                confirmLink.classList.add('disabled');
+                confirmLink.href = '#';
+            }
+            });
+        });
+    </script>
+</body>
+</html>

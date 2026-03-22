@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundara Bus Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Sundara.png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Sundara.png" class="site-logo">
+            <h1>Sundara Bus Ticket Booking</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">BOOK TICKET</a></li>
+                <li><a href="Contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="bform">
+            <h2>Book Your Ticket</h2>
+            <form action="buses.html" method="get">
+                <label for="from">From:</label>
+                <select id="from" name="from" required>
+                    <option value="">-- Select City --</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Trichy">Tiruchirappalli</option>
+                    <option value="Salem">Salem</option>
+                    <option value="Tirunelveli">Tirunelveli</option>
+                    <option value="Vellore">Vellore</option>
+                    <option value="Thoothukudi">Thoothukudi</option>
+                    <option value="Kanchipuram">Kanchipuram</option>
+                    <option value="Nagapattinam">Nagapattinam</option>
+                    <option value="Thanjavur">Thanjavur</option>
+                    <option value="Karur">Karur</option>
+                    <option value="Erode">Erode</option>
+                    <option value="Dindigul">Dindigul</option>
+                    <option value="Hosur">Hosur</option>
+                    <option value="Nagercoil">Nagercoil</option>
+                    <option value="Cuddalore">Cuddalore</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Tiruppur">Tiruppur</option>
+                    <option value="Ariyalur">Ariyalur</option>
+                    <option value="Dharmapuri">Dharmapuri</option>
+                    <option value="Krishnagiri">Krishnagiri</option>
+                    <option value="Perambalur">Perambalur</option>
+                    <option value="Ranipet">Ranipet</option>
+                    <option value="Sivagangai">Sivagangai</option>
+                    <option value="Virudhunagar">Virudhunagar</option>
+                    <option value="Namakkal">Namakkal</option>
+                    <option value="Tiruvannamalai">Tiruvannamalai</option>
+                    <option value="Tiruvallur">Tiruvallur</option>
+                    <option value="Theni">Theni</option>
+                    <option value="Tiruvarur">Tiruvarur</option>
+                    <option value="Villupuram">Villupuram</option>
+                    <option value="Kanyakumari">Kanyakumari</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="New Delhi">New Delhi</option>
+                </select>
+
+                <label for="to">To:</label>
+                <select id="to" name="to" required>
+                    <option value="">-- Select City --</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Trichy">Tiruchirappalli</option>
+                    <option value="Salem">Salem</option>
+                    <option value="Tirunelveli">Tirunelveli</option>
+                    <option value="Vellore">Vellore</option>
+                    <option value="Thoothukudi">Thoothukudi</option>
+                    <option value="Kanchipuram">Kanchipuram</option>
+                    <option value="Nagapattinam">Nagapattinam</option>
+                    <option value="Thanjavur">Thanjavur</option>
+                    <option value="Karur">Karur</option>
+                    <option value="Erode">Erode</option>
+                    <option value="Dindigul">Dindigul</option>
+                    <option value="Hosur">Hosur</option>
+                    <option value="Nagercoil">Nagercoil</option>
+                    <option value="Cuddalore">Cuddalore</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Tiruppur">Tiruppur</option>
+                    <option value="Ariyalur">Ariyalur</option>
+                    <option value="Dharmapuri">Dharmapuri</option>
+                    <option value="Krishnagiri">Krishnagiri</option>
+                    <option value="Perambalur">Perambalur</option>
+                    <option value="Ranipet">Ranipet</option>
+                    <option value="Sivagangai">Sivagangai</option>
+                    <option value="Virudhunagar">Virudhunagar</option>
+                    <option value="Namakkal">Namakkal</option>
+                    <option value="Tiruvannamalai">Tiruvannamalai</option>
+                    <option value="Tiruvallur">Tiruvallur</option>
+                    <option value="Theni">Theni</option>
+                    <option value="Tiruvarur">Tiruvarur</option>
+                    <option value="Villupuram">Villupuram</option>
+                    <option value="Kanyakumari">Kanyakumari</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="New Delhi">New Delhi</option>
+                </select>
+                <button type="button" id="swap">⇄Swap</button>
+                <label for="tdate">Travel Date:</label>
+                <input type="date" id="tdate" name="tdate" required>
+
+                <label for="rdate">Return Date:(optional)</label>
+                <input type="date" id="rdate" name="rdate">
+
+                <label for="seats">Seats:</label>
+                <input type="number" id="seat" name="seat" min="1" max="10" placeholder="Enter No Of Seats" required>
+
+                <button type="reset">Reset</button>
+                <button type="submit">Search Buses</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Sundara Bus Ticket Booking Service</p>
+    </footer>
+    <script>
+    document.getElementById("swap").addEventListener("click", () => {
+        const from = document.getElementById("from");
+        const to = document.getElementById("to");
+        const temp = from.value;
+        from.value = to.value;
+        to.value = temp;
+    });
+    document.querySelector("form").addEventListener("submit", (e) => {
+        const from = document.getElementById("from").value;
+        const to = document.getElementById("to").value;
+        if (from === to) {
+            alert("From and To cities cannot be the same.");
+            e.preventDefault(); 
+        }
+    });
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("tdate").value = today;
+    </script>
+</body>
+</html>

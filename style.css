@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+header{
+    background: #004080;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+header h1{
+    margin-bottom: 10px;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+nav ul li{
+    margin: 0px 15px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.bform{
+    background: white;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.bform h2{
+    margin-bottom: 50px;
+    text-align: center;
+}
+.bform label{
+    display: block;
+    margin: 10px 0 5px;
+}
+.bform input,.bform button,.bform select{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+#swap{
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: small;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.bform button{
+    background: #004080;
+    color:white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.bform button:hover{
+    background: #0066cc;
+}
+footer{
+    text-align: center;
+    padding: 15px;
+    background: #004080;
+    color: white;
+    margin-top: 30px;
+}
+.seatlayout{
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+.seats{
+    display: grid;
+    grid-template-columns: repeat(4,60px);
+    gap:10px;
+    justify-content: center;
+}
+.seat{
+    background: #eee;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.seat:hover{
+    background: #004080;
+    color: white;
+}
+.seatbooked{
+
+    background: #999;
+    cursor: not-allowed;
+    color: white;
+}
+main{
+    max-width: 900px;
+    margin:20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.searchsummary{
+    background: #eaf2ff;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+.searchsummary h2{
+    margin-top: 0;
+    color:#004080;
+}
+.buses{
+    text-align: center;
+}
+.buses table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.buses th,.buses td{
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+.buses th{
+    background: #004080;
+    color: white;
+}
+.buses tr:nth-child(even){
+    background: #f9f9f9;
+}
+.buses tr:hover{
+    background:#dce9ff;
+}
+.seatmap{
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+.bus{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(2,50px) 30px repeat(2,50px);
+    gap: 10px;
+    justify-content: center;
+}
+.seat{
+    background: #eee;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.seat:hover{
+    background: #004080;
+    color: white;
+}
+.seat.booked{
+    background: #999;
+    cursor: not-allowed;
+    color: white;
+    opacity: 0.7;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.seat.selected{
+    background: #28a745;
+    color: white;
+}
+.layout{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap:40px;
+}
+#summary{
+    flex: 1;
+    background: #eaf2ff;
+    padding: 15px;
+    border-radius: 6px;
+}
+.seatmap{
+    flex: 2;
+    text-align: center;
+}
+.confirm-btn{
+    display: inline-block;
+    padding: 10px 20px;
+    background: #004080;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.confirm-btn:hover{
+    background: #0066cc;
+}
+.confirm-btn.disabled{
+    background-color: #999;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+.bus-details, .passenger-info {
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.bus-details h2, .passenger-info h2 {
+  margin-bottom: 10px;
+  color: #004080;
+}
+
+.passenger-info form {
+  display: flex;
+  flex-direction: column;
+}
+
+.passenger-info label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.passenger-info input {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.passenger-info button {
+  margin-top: 15px;
+  padding: 10px;
+  background: #004080;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.passenger-info button:hover {
+  background: #0066cc;
+}
+.bus-info{
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f9f9f9;
+}
+.bus-info h2{
+    margin-bottom:10px;
+    color:#004080;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    gap:12px;
+}
+.site-logo{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+}
+.buses a{
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #004080;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.buses a:hover{
+    background-color: #0066cc;
+    transform: scale(1.05);
+}
+.contact {
+  max-width: 600px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.contact h2 {
+  color: #004080;
+  margin-bottom: 15px;
+}
+
+.contact form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact form button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #004080;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact form button:hover {
+  background: #0066cc;
+}
