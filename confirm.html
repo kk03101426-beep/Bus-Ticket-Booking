@@ -117,6 +117,24 @@
 
                 doc.setFontSize(10);
                 doc.text("Thank You For Booking With Sundhara Bus Ticket Booking Service!",105,280,null,null,"center");
+                doc.setFontSize(20);
+                let termsY = 200;
+                doc.text("Terms & Conditions:", 20, termsY);
+                termsY += 10;
+                doc.setFontSize(9);
+                doc.text("1. Please carry a valid government ID proof during travel.", 20, termsY);
+                termsY += 10;
+                doc.text("2. Tickets once booked cannot be cancelled or refunded.", 20, termsY);
+                termsY += 10;
+                doc.text("3. The company is not responsible for delays due to traffic, weather, or unforeseen events.", 20, termsY);
+                termsY += 10;
+                doc.text("4. Passengers must report at the boarding point at least 15 minutes before departure.", 20, termsY);
+                termsY += 10;
+                doc.text("5. Luggage is carried at passenger's own risk. Valuable items should be kept with you.", 20, termsY);
+                termsY += 10;
+                doc.text("6. Smoking, alcohol, and illegal substances are strictly prohibited inside the bus.", 20, termsY);
+                termsY += 10;
+                doc.text("7. Company reserves the right to change schedules without prior notice.", 20, termsY);
             
                 doc.save("ticket.pdf");
 
